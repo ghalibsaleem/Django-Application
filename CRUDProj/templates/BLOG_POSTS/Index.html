@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Blog</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap-4.1.3/css/bootstrap.min.css' %}">
+        <style>
+            body {
+                    background-image: url("{% static 'images/bg.jpg' %}");
+                }
+            .anyClass {
+                height:150px;
+                overflow-y: scroll;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div >
+            <div class="d-flex justify-content-center">
+                <h1>Welcome to my Blog</h1>
+            </div>
+            <div class="d-flex my-2 justify-content-center">
+                <a href="{% url 'CreatePOST'%}" class="btn btn-primary">Add a new Post</a>
+            </div>
+            <div class="d-flex justify-content-center"> 
+                <ul class="list-group">
+                    {% for t_post in post_list %}
+                        <li class="list-group-item">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    Featured
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{t_post.title}}</h5>
+                                    <p class="card-text">{{t_post.txt}}</p>
+                                    <a href="{% url 'ViewPOST' t_post.id%}" class="btn btn-primary">View</a>
+                                    <a href="{% url 'UpdatePOST' t_post.id%}" class="btn btn-primary">Update</a>
+                                    <a href="{% url 'DeletePOST' t_post.id%}" class="btn btn-primary">Delete</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <div class="float-left mx-2">Likes: {{t_post.likes}}  </div>
+                                    <div class="float-left mx-2"> Dislikes: {{t_post.dislikes}} &nbsp;&nbsp; <pre>     </pre></div>
+                                    <div class="float-right">{{t_post.date}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor%}
+                </ul>
+
+                
+            </div>
+        </div>
+        
+    </body>
+</html>

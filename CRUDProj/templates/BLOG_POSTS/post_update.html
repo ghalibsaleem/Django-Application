@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Update</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'bootstrap-4.1.3/css/bootstrap.min.css' %}">
+        <style>
+            body {
+                    background-image: url("{% static 'images/bg.jpg' %}");
+                }
+        </style>
+    </head>
+    
+    <body>
+        <div >
+            <div class="d-flex justify-content-center">
+                <h1>Post Update</h1>
+            </div>
+            <div class="d-flex justify-content-center"> 
+                <form method="POST">
+                    {% csrf_token %}
+                   
+
+                    <div class="form-group">
+                        {{ form_post.title }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_post.txt }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_post.date }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_post.likes }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_post.dislikes }}
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Update">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </body>
+</html>
